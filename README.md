@@ -1,2 +1,2 @@
 # postman_builder
- Build postman routes automatically based upon express routes
+ Generate postman routes automatically based upon express routes
