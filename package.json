@@ -1,10 +1,13 @@
 {
-  "name": "postman_builder",
+  "name": "postman-builder",
   "version": "0.0.1",
   "description": "Generate postman routes automatically by express routes",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "./src",
+  "bin": {
+    "postman-builder": "./bin/build.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/fazulk/postman_builder/issues"
   },
-  "homepage": "https://github.com/fazulk/postman_builder#readme"
+  "homepage": "https://github.com/fazulk/postman_builder#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "find-up": "^4.1.0"
+  }
 }
