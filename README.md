@@ -4,6 +4,8 @@ This is ALPHA and extreme WIP
 
 Generate postman routes automatically based upon express routes
 
+`npm i postman-builder -D`
+
 Place `postmanbuilder.config.js` at root of your project with the following options:
 
 ```javascript
