@@ -16,4 +16,4 @@ module.exports = {
 ```
 
 Thank you to express-list-endpoints package for boilerplate to pull all endpoints:
-https://www.npmjs.com/package/express-list-endpoints
+https://github.com/AlbertoFdzM/express-list-endpoints
