@@ -1,0 +1,23 @@
+{
+  "name": "postman_builder",
+  "version": "0.0.1",
+  "description": "Generate postman routes automatically by express routes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fazulk/postman_builder.git"
+  },
+  "keywords": [
+    "postman",
+    "express"
+  ],
+  "author": "Jeff Fasulkey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fazulk/postman_builder/issues"
+  },
+  "homepage": "https://github.com/fazulk/postman_builder#readme"
+}
