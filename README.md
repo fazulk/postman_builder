@@ -6,6 +6,8 @@ Generate postman routes automatically based upon express routes
 
 `npm i postman-builder -D`
 
+add to scripts `{ build:postman: 'postman-builder' }`
+
 Place `postmanbuilder.config.js` at root of your project with the following options:
 
 ```javascript
