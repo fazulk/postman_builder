@@ -7,9 +7,21 @@
  * }
  * @return Buildout Postman Route
  */
-module.exports = data => {
-  return function routemeta(req, res, next, getMeta) {
-    if (getMeta && data) return data;
-    next();
-  };
-};
+
+const defaultFunction = data => {
+    return function routemeta(req, res, next, getMeta) {
+        if (getMeta && data) return data
+        next()
+    }
+}
+
+const koa = data => {
+    return function routemeta(ctx, next, getMeta) {
+        if (getMeta && data) return data
+        next()
+    }
+}
+
+let meta = (module.exports = defaultFunction)
+
+meta.koa = koa

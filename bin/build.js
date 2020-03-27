@@ -1,27 +1,52 @@
 #!/usr/bin/env node
 
-const makeUploadToPostman = require(`../src/upload_to_postman`);
-const getEndpoints = require(`../src/get_endpoints`);
-const findUp = require("find-up");
+const makeUploadToPostman = require(`../src/upload_to_postman`)
+const getEndpointsExpress = require(`../src/get_endpoints_express`)
+const getEndpointsKoa = require(`../src/get_endpoints_koa`)
+const findUp = require('find-up')
 
-(async () => {
-  const configFile = await findUp("postmanbuild.config.js");
+;(async () => {
+    const configFile = await findUp('postmanbuild.config.js')
 
-  if (!configFile) {
-    console.log("NO config file found, please place at root of project");
-    process.exit(0);
-  }
-  const config = require(configFile);
+    if (!configFile) {
+        console.log('NO config file found, please place at root of project')
+        process.exit(0)
+    }
+    const config = require(configFile)
 
-  const { app, collection, workspaceId, postmanKey } = config;
+    let {
+        app,
+        collection,
+        workspaceId,
+        postmanKey,
+        framework,
+        envVariable
+    } = config
 
-  async function uploadToPostman() {
-    //   if (process.env.ENV !== `production`) {
-    const endPoints = getEndpoints(app);
-    await makeUploadToPostman(postmanKey, endPoints, collection, workspaceId);
+    framework = framework ? framework.toLowerCase() : null
 
-    process.exit(0);
-    //   }
-  }
-  uploadToPostman();
-})();
+    const getFramework = async (app, framework) => {
+        switch (framework) {
+            case 'koa':
+                return await getEndpointsKoa(app)
+
+            default:
+                return getEndpointsExpress(app)
+        }
+    }
+
+    async function uploadToPostman() {
+        if (process.env.ENV !== `production`) {
+            const endPoints = await getFramework(app, framework)
+            await makeUploadToPostman(
+                postmanKey,
+                endPoints,
+                collection,
+                workspaceId,
+                envVariable
+            )
+        }
+        process.exit(0)
+    }
+    uploadToPostman()
+})()

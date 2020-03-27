@@ -1,3 +1,3 @@
-const metaMiddleware = require(`./middleware`);
+const metaMiddleware = require(`./middleware`)
 
-module.exports = metaMiddleware;
+module.exports = metaMiddleware
