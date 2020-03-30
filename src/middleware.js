@@ -9,19 +9,19 @@
  */
 
 const defaultFunction = data => {
-    return function routemeta(req, res, next, getMeta) {
-        if (getMeta && data) return data
-        next()
-    }
-}
+  return function routemeta(req, res, next, getMeta) {
+    if (getMeta && data) return data;
+    next();
+  };
+};
 
 const koa = data => {
-    return function routemeta(ctx, next, getMeta) {
-        if (getMeta && data) return data
-        next()
-    }
-}
+  return async function routemeta(ctx, next, getMeta) {
+    if (getMeta && data) return data;
+    await next();
+  };
+};
 
-let meta = (module.exports = defaultFunction)
+let meta = (module.exports = defaultFunction);
 
-meta.koa = koa
+meta.koa = koa;
